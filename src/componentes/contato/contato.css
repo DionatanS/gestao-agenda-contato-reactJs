@@ -1,0 +1,50 @@
+.wrap-contato{
+    width: 99%;
+    height: 80px;
+    border-radius: 10px;
+
+    display: block;
+    justify-content: center;
+    background-color: azure;
+    margin-top: 5px;    
+}
+.wrap-nome-contato{
+    display: flex;
+    justify-content: center;
+}
+.remover-contato{
+    color: #FF0000;
+    height: 22px;
+    font-size: 12px;    
+    border: none;
+    border: solid 1px #FF0000;
+    border-radius:5px; 
+    margin-top: 5px; 
+    cursor: pointer;  
+}
+.remover-contato:hover{
+    color: #FFFFFF;
+    background-color: #FF0000;
+}
+.nome-contato{
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 3px;
+}
+
+.wrap-informacoes{
+    padding-left: 40px;
+    padding-right: 40px;
+
+    margin-top: 3px;
+    display: flex;
+    justify-content: space-between;
+}
+.wrap-telefone-data-nascimento-contato{
+    font-size: 17px;
+    font-weight: 600;
+}
+.wrap-endereco-email-contato{
+    font-size: 17px;  
+    font-weight: 600;  
+}

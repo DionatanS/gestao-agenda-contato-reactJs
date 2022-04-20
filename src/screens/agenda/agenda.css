@@ -1,0 +1,67 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: black;
+}
+.wrap-agenda{
+    background-color: #333;
+    display: block;
+
+    width: 50%;
+    height: 80%;
+
+    border-radius: 10px;
+}
+.title{
+    color: azure;
+    font-size: 27px;
+    display: flex;
+    justify-content: center;
+
+    margin-top: 20px;
+}
+.wrap-contatos{
+    margin: auto;
+    margin-top: 10px;
+    width: 80%;
+    height: 70%;
+
+    overflow-y: scroll;
+    
+}
+.wrap-contatos::-webkit-scrollbar{
+    display: none;
+}
+.wrap-btn{
+    display: flex;
+    justify-content: center;
+}
+.adcionar-contato-btn{
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+    margin-top: 25px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 70%;
+    height: 60px;
+
+    background: -webkit-linear-gradient(to left, #21d4fd, #b721ff);
+    background: -o-linear-gradient(to left, #21d4fd, #b721ff);
+    background: -moz-linear-gradient(to left, #21d4fd, #b721ff);
+    background: linear-gradient(to left, #21d4fd, #b721ff);
+
+    
+}
