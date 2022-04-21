@@ -10,7 +10,9 @@
 }
 .wrap-nome-contato{
     display: flex;
-    justify-content: center;
+    justify-content:space-between;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 .remover-contato{
     color: #FF0000;

@@ -1,10 +1,30 @@
+import axios from 'axios';
 import { useState } from 'react';
 import './login.css'
 
 export default function Login(){
-
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
+
+    function authenticaLogin(){
+      if(email || password === ""){
+        console.log('Campo não preenchido!')
+      }else{
+        var options = {
+          method: 'POST',
+          url: 'http://localhost:3000/authenticate',
+          headers: {'Content-Type': 'application/json'},
+          data: {email: email, password: password}
+        };
+        
+        axios.request(options).then(function (response) {
+          console.log(response.data);
+          //aui redireciona
+        }).catch(function (error) {
+          console.error(error);
+        });
+      }
+    }
 
     return(
      <div className="container">
@@ -35,7 +55,7 @@ export default function Login(){
             </div>
 
             <div className="container-login-form-btn">
-              <button className="login-form-btn">Login</button>
+              <button onClick={authenticaLogin} className="login-form-btn">Login</button>
             </div>        
 
           </form>

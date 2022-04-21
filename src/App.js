@@ -6,7 +6,7 @@ import Login from './screens/login/index';
 function App() {
 
   return (
-    <Agenda/>    
+    <Login/>    
   );
 }
 
