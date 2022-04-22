@@ -1,4 +1,3 @@
-import { useContatosApi } from '../../hooks/useContatosApi'
 
 import './contato.css'
 

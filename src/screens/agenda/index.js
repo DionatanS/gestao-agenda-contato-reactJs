@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
-import axios from 'axios';
 import Contato from '../../componentes/contato'
 import Modal from "react-modal";
 import './agenda.css'
@@ -46,7 +44,7 @@ export default function Agenda() {
 
     //Adcionar contatos
     async function criarContato() {
-        if (nome != '' && sobrenome != '' && telefone != '' && dataNascimento != '' && endereco != '' && email != '') {
+        if (nome !== '' && sobrenome !== '' && telefone !== '' && dataNascimento !== '' && endereco !== '' && email !== '') {
             closeModal()
         } else {
             console.log('Um dos campos não foi preenchido!')
@@ -61,7 +59,7 @@ export default function Agenda() {
             email: email
         }
 
-        const contatoCriado = await criarContatoApi(contato)
+        await criarContatoApi(contato)
         await carregarContatos()
     }
 
