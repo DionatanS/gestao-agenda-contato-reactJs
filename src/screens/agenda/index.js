@@ -1,11 +1,41 @@
+import React, { useState, useEffect } from 'react';
+
+import axios from 'axios';
 import Contato from '../../componentes/contato'
 import Modal from "react-modal";
 import './agenda.css'
-import { useState } from 'react';
+import { useContatosApi } from '../../hooks/useContatosApi'
+
 
 export default function Agenda() {
+    //funçoes para funcionamento da aplicação
     Modal.setAppElement("#root");
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [nome, setNome] = useState();
+    const [sobrenome, setSobrenome] = useState();
+    const [telefone, setTelefone] = useState();
+    const [dataNascimento, setDataNascimento] = useState();
+    const [endereco, setEndereco] = useState();
+    const [email, setEmail] = useState();
+
+    const [contatos, setContatos] = useState([])
+
+    const { criarContato: criarContatoApi, listarContatos, removerContato: removerContatoApi } = useContatosApi()
+
+    const carregarContatos = async () => {
+        const contatosApi = await listarContatos()
+        setContatos(contatosApi);
+    }
+
+    const removerContato = async (id) => {
+        await removerContatoApi(id)
+        await carregarContatos();
+    }
+
+    useEffect(() => {
+        carregarContatos()
+    }, [])
+
 
     function openModal() {
         setIsOpen(true);
@@ -14,27 +44,39 @@ export default function Agenda() {
         setIsOpen(false);
     }
 
+    //Adcionar contatos
+    async function criarContato() {
+        if (nome != '' && sobrenome != '' && telefone != '' && dataNascimento != '' && endereco != '' && email != '') {
+            closeModal()
+        } else {
+            console.log('Um dos campos não foi preenchido!')
+        };
+
+        var contato = {
+            nome: nome,
+            sobrenome: sobrenome,
+            telefone: telefone,
+            dataNascimento: dataNascimento,
+            endereco: endereco,
+            email: email
+        }
+
+        const contatoCriado = await criarContatoApi(contato)
+        await carregarContatos()
+    }
 
     return (
         <div className="container">
             <div className="wrap-agenda">
                 <span className="title">Lista de Contatos</span>
                 <div className="wrap-contatos">
-                    <Contato
-                        nome="Dionatan da Silva"
-                        telefone="51996098394"
-                        endereco="Miguel pereira dos Santos"
-                        datanascimento="18/11/1997"
-                        email="dionatannsilvaa@gmail.com"
-                    />
-
-                    <Contato
-                        nome="Luana da Silva"
-                        telefone="51996098394"
-                        endereco="Miguel pereira dos Santos"
-                        datanascimento="18/11/2000"
-                        email="lulu@gmail.com"
-                    />
+                    {contatos.map((contato) => (
+                        <Contato
+                            key={contato._id}
+                            contato={contato}
+                            handleRemover={(id) => removerContato(id)}
+                        />
+                    ))}
 
                 </div>
                 <div className="wrap-btn">
@@ -57,30 +99,30 @@ export default function Agenda() {
 
                     <div className="wrap-modal-contato">
                         <span className="span-contato-modal">Nome: </span>
-                        <input type="text" className="input-modal-contato" placeholder=' Nome' />
+                        <input onChange={e => setNome(e.target.value)} type="text" className="input-modal-contato" placeholder=' Nome' />
+                    </div>
+                    <div className="wrap-modal-contato">
+                        <span className="span-contato-modal">Sobrenome: </span>
+                        <input onChange={e => setSobrenome(e.target.value)} type="text" className="input-modal-contato" placeholder=' Nome' />
                     </div>
                     <div className="wrap-modal-contato">
                         <span className="span-contato-modal">Telefone: </span>
-                        <input type="text" className="input-modal-contato" placeholder=' Telefone' />
+                        <input onChange={e => setTelefone(e.target.value)} type="text" className="input-modal-contato" placeholder=' Telefone' />
                     </div>
                     <div className="wrap-modal-contato">
                         <span className="span-contato-modal">Data de Nascimento: </span>
-                        <input type="text" className="input-modal-contato" placeholder=' Data de Nascimento' />
+                        <input onChange={e => setDataNascimento(e.target.value)} type="text" className="input-modal-contato" placeholder=' Data de Nascimento' />
                     </div>
                     <div className="wrap-modal-contato">
                         <span className="span-contato-modal">Endereço: </span>
-                        <input type="text" className="input-modal-contato" placeholder=' Endereço' />
+                        <input onChange={e => setEndereco(e.target.value)} type="text" className="input-modal-contato" placeholder=' Endereço' />
                     </div>
                     <div className="wrap-modal-contato">
                         <span className="span-contato-modal">Email: </span>
-                        <input type="email" className="input-modal-contato" placeholder=' Email' />
-                        <button onClick={closeModal} className="submit-form-contato">Salvar Contato</button>
+                        <input onChange={e => setEmail(e.target.value)} type="email" className="input-modal-contato" placeholder=' Email' />
+                        <button onClick={criarContato} className="submit-form-contato">Salvar Contato</button>
                     </div>
-
-
                 </form>
-
-
             </Modal>
 
         </div>

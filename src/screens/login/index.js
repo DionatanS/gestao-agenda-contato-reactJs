@@ -1,29 +1,27 @@
-import axios from 'axios';
+import React from 'react'
 import { useState } from 'react';
 import './login.css'
 
+import { useAuthApi } from '../../hooks/useAuthApi'
+
 export default function Login(){
     const[email, setEmail] = useState("");
-    const[password, setPassword] = useState("");
+    const[senha, setSenha] = useState("");
 
-    function authenticaLogin(){
-      if(email || password === ""){
-        console.log('Campo não preenchido!')
-      }else{
-        var options = {
-          method: 'POST',
-          url: 'http://localhost:3000/authenticate',
-          headers: {'Content-Type': 'application/json'},
-          data: {email: email, password: password}
-        };
-        
-        axios.request(options).then(function (response) {
-          console.log(response.data);
-          //aui redireciona
-        }).catch(function (error) {
-          console.error(error);
-        });
+    const { autenticar } = useAuthApi()
+
+    async function login(){
+      if(email === "" || senha === ""){
+        alert('Campo não preenchido!')
+        return
       }
+
+      await autenticar(email, senha).then(() => {
+        window.location.href="/agenda"
+      }).catch(() => {
+        alert('Erro ao logar')
+      })
+
     }
 
     return(
@@ -48,14 +46,14 @@ export default function Login(){
               <input 
               className={email !== "" ? 'has-val input' : 'input'}
               type="password" 
-              value={password} 
-              onChange= { e => setPassword(e.target.value)}
+              value={senha} 
+              onChange= { e => setSenha(e.target.value)}
               />
               <span className="focus-input" data-placeholder="Password"></span>
             </div>
 
             <div className="container-login-form-btn">
-              <button onClick={authenticaLogin} className="login-form-btn">Login</button>
+              <button onClick={login} className="login-form-btn">Login</button>
             </div>        
 
           </form>
