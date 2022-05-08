@@ -21,5 +21,5 @@ Este é um projeto desenvolvido para praticar conhecimentos em ReactJs, MongoDB 
 ![Agenda](src/agenda.png?raw=true "Agenda")
 
 # Adcionar Contato
-![add-contato](src/add-contato.png?raw=true "add-contato")
+![add-contato](src/assets/add-contato.png?raw=true "add-contato")
 
