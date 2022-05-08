@@ -2,7 +2,7 @@
 
 Este é um projeto desenvolvido para praticar conhecimentos em ReactJs, MongoDB e NodeJs, foi contruido uma agenda com login e crud no banco.
 
-##Tecnologias utilizadas no projeto:
+## Tecnologias utilizadas no projeto:
 
 - **`React`**
 - **`Axios`**
@@ -14,12 +14,12 @@ Este é um projeto desenvolvido para praticar conhecimentos em ReactJs, MongoDB 
 - **`yarn`**
 - **`yarn start`**
 
-#Login
+# Login
 ![Login](src/login.png?raw=true "Login")
 
-#Agenda
+# Agenda
 ![Agenda](src/agenda.png?raw=true "Agenda")
 
-#Adcionar Contato
+# Adcionar Contato
 ![add-contato](src/add-contato.png?raw=true "add-contato")
 
