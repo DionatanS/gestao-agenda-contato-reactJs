@@ -15,10 +15,10 @@ Este é um projeto desenvolvido para praticar conhecimentos em ReactJs, MongoDB 
 - **`yarn start`**
 
 # Login
-![Login](src/login.png?raw=true "Login")
+![Login](src/assets/login.png?raw=true "Login")
 
 # Agenda
-![Agenda](src/agenda.png?raw=true "Agenda")
+![Agenda](src/assets/agenda.png?raw=true "Agenda")
 
 # Adcionar Contato
 ![add-contato](src/assets/add-contato.png?raw=true "add-contato")
